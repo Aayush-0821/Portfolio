@@ -2,32 +2,33 @@
 
 import React, { useEffect, useState } from "react";
 import { playClickSound } from "../utils/sound";
+import { motion } from "framer-motion";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
 
   const links = [
-  {
-    name: "About",
-    mobile: true,
-  },
-  {
-    name: "Skills",
-    mobile: true,
-  },
-  {
-    name: "Projects",
-    mobile: true,
-  },
-  {
-    name: "Experience",
-    mobile: false,
-  },
-  {
-    name: "Laboratory",
-    mobile: false,
-  },
-];
+    {
+      name: "About",
+      mobile: false,
+    },
+    {
+      name: "Skills",
+      mobile: true,
+    },
+    {
+      name: "Projects",
+      mobile: true,
+    },
+    {
+      name: "Experience",
+      mobile: false,
+    },
+    {
+      name: "Resume",
+      mobile: true,
+    },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,13 +41,24 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav
+    <motion.nav
+      initial={{ opacity: 0, scale: 0.99, filter: "blur(10px)" }}
+      animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+      transition={{ duration: 0.9, ease: "easeOut" }}
       className={`fixed top-5 left-1/2 -translate-x-1/2 ${scrolled ? "w-[75%] h-16" : "w-[85%] h-18"} bg-white border-[3px] border-black rounded-full shadow-[0_8px_0_#000] flex items-center justify-between md:justify-between md:items-center px-6 z-50 transition-all duration-300
       `}
     >
       {/* Logo / Home */}
-      <a
+      <motion.a
         href="#home"
+        animate={{
+            y:[0,-4,0]
+        }}
+        transition={{
+            duration:0.75,
+            repeat:Infinity,
+            ease:"easeInOut"
+        }}
         className="
         w-12
         h-12
@@ -74,12 +86,11 @@ const Navbar = () => {
           border-black
           "
         />
-      </a>
+      </motion.a>
 
       {/* Links */}
-      {/* Links */}
-<div
-  className="
+      <div
+        className="
   flex
   gap-5
   md:gap-7
@@ -88,16 +99,12 @@ const Navbar = () => {
   text-sm
   md:text-base
   "
->
-
-{links.map((link) => (
-
-<a
-key={link.name}
-
-href={`#${link.name.toLowerCase()}`}
-
-className={`
+      >
+        {links.map((link) => (
+          <a
+            key={link.name}
+            href={`#${link.name.toLowerCase()}`}
+            className={`
 group
 relative
 hover:text-black
@@ -106,13 +113,11 @@ transition
 ${link.mobile ? "" : "hidden md:block"}
 
 `}
->
+          >
+            {link.name}
 
-{link.name}
-
-
-<span
-className="
+            <span
+              className="
 absolute
 left-0
 -bottom-2
@@ -129,13 +134,10 @@ group-hover:w-full
 transition-all
 duration-300
 "
-/>
-
-</a>
-
-))}
-
-</div>
+            />
+          </a>
+        ))}
+      </div>
       {/* Contact */}
       <button
         onClick={() => {
@@ -149,7 +151,7 @@ duration-300
       >
         Contact me
       </button>
-    </nav>
+    </motion.nav>
   );
 };
 
