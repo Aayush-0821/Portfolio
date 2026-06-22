@@ -4,7 +4,13 @@ import React, { useEffect, useState } from "react";
 import { playClickSound } from "../utils/sound";
 import { motion } from "framer-motion";
 
-const Navbar = () => {
+const Navbar = ({
+  musicEnabled = false,
+  started = false,
+}: {
+  musicEnabled?: boolean;
+  started?: boolean;
+}) => {
   const [scrolled, setScrolled] = useState(false);
 
   const links = [
@@ -43,7 +49,11 @@ const Navbar = () => {
   return (
     <motion.nav
       initial={{ opacity: 0, scale: 0.99, filter: "blur(10px)" }}
-      animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+      animate={{
+        opacity: started ? 1 : 0,
+        scale: started ? 1 : 0.99,
+        filter: started ? "blur(0px)" : "blur(10px)",
+      }}
       transition={{ duration: 0.9, ease: "easeOut" }}
       className={`fixed top-5 left-1/2 -translate-x-1/2 ${scrolled ? "w-[75%] h-16" : "w-[85%] h-18"} bg-white border-[3px] border-black rounded-full shadow-[0_8px_0_#000] flex items-center justify-between md:justify-between md:items-center px-6 z-50 transition-all duration-300
       `}
@@ -52,12 +62,12 @@ const Navbar = () => {
       <motion.a
         href="#home"
         animate={{
-            y:[0,-4,0]
+          y: [0, -4, 0],
         }}
         transition={{
-            duration:0.75,
-            repeat:Infinity,
-            ease:"easeInOut"
+          duration: 0.75,
+          repeat: Infinity,
+          ease: "easeInOut",
         }}
         className="
         w-12
@@ -141,7 +151,7 @@ duration-300
       {/* Contact */}
       <button
         onClick={() => {
-          playClickSound();
+          if (musicEnabled) playClickSound();
           document.getElementById("contact")?.scrollIntoView({
             behavior: "smooth",
           });
