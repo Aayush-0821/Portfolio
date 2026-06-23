@@ -13,25 +13,37 @@ const Navbar = ({
 }) => {
   const [scrolled, setScrolled] = useState(false);
 
+  const handleScroll = (sectionId:string) =>{
+    document.getElementById(sectionId)?.scrollIntoView({
+      behavior:"smooth",
+      block:"start",
+    });
+  }
+
   const links = [
     {
       name: "About",
+      section: "about",
       mobile: false,
     },
     {
       name: "Skills",
+      section: "skills",
       mobile: true,
     },
     {
       name: "Projects",
+      section: "projects",
       mobile: true,
     },
     {
       name: "Experience",
+      section: "experience",
       mobile: false,
     },
     {
       name: "Resume",
+      section: "resume",
       mobile: true,
     },
   ];
@@ -59,8 +71,8 @@ const Navbar = ({
       `}
     >
       {/* Logo / Home */}
-      <motion.a
-        href="#home"
+      <motion.button
+        onClick={()=>handleScroll("home")}
         animate={{
           y: [0, -4, 0],
         }}
@@ -81,7 +93,7 @@ const Navbar = ({
         justify-center
 
         bg-[#fff7b3]
-
+        cursor-pointer
         hover:scale-105
         transition
         "
@@ -96,7 +108,7 @@ const Navbar = ({
           border-black
           "
         />
-      </motion.a>
+      </motion.button>
 
       {/* Links */}
       <div
@@ -111,17 +123,16 @@ const Navbar = ({
   "
       >
         {links.map((link) => (
-          <a
+          <button
             key={link.name}
-            href={`#${link.name.toLowerCase()}`}
+            onClick={()=>handleScroll(link.section)}
             className={`
 group
 relative
 hover:text-black
 transition
-
+cursor-pointer
 ${link.mobile ? "" : "hidden md:block"}
-
 `}
           >
             {link.name}
@@ -145,7 +156,7 @@ transition-all
 duration-300
 "
             />
-          </a>
+          </button>
         ))}
       </div>
       {/* Contact */}

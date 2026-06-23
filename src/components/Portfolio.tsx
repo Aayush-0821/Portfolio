@@ -3,6 +3,8 @@
 import Navbar from "./Navbar";
 import Hero from "./Hero";
 import BootLoader from "./BootLoader";
+import About from "./About";
+import { useEffect } from "react";
 
 export default function Portfolio({
   started = false,
@@ -15,6 +17,12 @@ export default function Portfolio({
   setStarted: (v: boolean) => void;
   setMusicEnabled: (v: boolean) => void;
 }) {
+
+  useEffect(()=>{
+    window.history.scrollRestoration = "manual";
+    window.scrollTo(0,0);
+  },[]);
+
   return (
     <main className="min-h-screen bg-[#fff7b3]">
       <BootLoader setStarted={setStarted} setMusicEnabled={setMusicEnabled} />
@@ -22,6 +30,8 @@ export default function Portfolio({
       <Navbar started={started} musicEnabled={musicEnabled} />
 
       <Hero started={started} musicEnabled={musicEnabled} />
+
+      <About musicEnabled={musicEnabled}/>
     </main>
   );
 }
