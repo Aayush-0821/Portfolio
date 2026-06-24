@@ -5,6 +5,7 @@ import Hero from "./Hero";
 import BootLoader from "./BootLoader";
 import About from "./About";
 import { useEffect } from "react";
+import Skills from "./Skills";
 
 export default function Portfolio({
   started = false,
@@ -32,6 +33,8 @@ export default function Portfolio({
       <Hero started={started} musicEnabled={musicEnabled} />
 
       <About musicEnabled={musicEnabled}/>
+
+      <Skills musicEnabled={musicEnabled}/>
     </main>
   );
 }
