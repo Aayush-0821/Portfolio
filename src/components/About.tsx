@@ -43,13 +43,9 @@ const Counter = ({ value, start }: { value: number; start: boolean }) => {
   return <>{count}</>;
 };
 
-const About = ({
-  musicEnabled = false,
-}:{
-  musicEnabled?:boolean;
-}) => {
+const About = ({ musicEnabled = false }: { musicEnabled?: boolean }) => {
   const [hovering, setHovering] = useState(false);
-  const [statsStarted,setStatsStarted] = useState(false);
+  const [statsStarted, setStatsStarted] = useState(false);
 
   const [mouse, setMouse] = useState({
     x: 0,
@@ -86,9 +82,10 @@ const About = ({
   };
 
   return (
-    <section 
-    id="about"
-    className="min-h-screen bg-[#0e5d3f] px-6 md:px-6 py-16 md:py-24 mt-10 overflow-hidden">
+    <section
+      id="about"
+      className="min-h-screen bg-[#0e5d3f] px-6 md:px-6 pb-10 pt-16 md:pt-24 mt-10 overflow-hidden"
+    >
       {/* Heading */}
       <motion.div
         initial={{ opacity: 0, y: -40 }}
@@ -102,7 +99,22 @@ const About = ({
         </h1>
 
         <div className="mt-8 flex flex-col md:flex-row justify-center items-center gap-4 text-base sm:text-xl md:text-2xl font-bold text-white">
-          <Gamepad2 size={32} />
+          <motion.div
+            animate={{
+              y: [0, -6, 0],
+              rotate: [-8, 8, -8],
+            }}
+            transition={{
+              duration: 2.5,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          >
+            <Gamepad2
+              size={32}
+              className="text-[#fff7b3] drop-shadow-[0_0_12px_rgba(255,247,179,0.8)]"
+            />
+          </motion.div>
 
           <span>
             Full-stack developer • Problem Solver • Creating impactful digital
@@ -165,13 +177,13 @@ const About = ({
 
             <div className="flex flex-col sm:flex-row gap-4 mt-10">
               <motion.button
-                onClick={()=>{
-                  if(musicEnabled){
+                onClick={() => {
+                  if (musicEnabled) {
                     playClickSound();
                   }
 
                   document.getElementById("projects")?.scrollIntoView({
-                    behavior:"smooth"
+                    behavior: "smooth",
                   });
                 }}
                 initial={{ opacity: 0, x: -20 }}
@@ -184,13 +196,13 @@ const About = ({
               </motion.button>
 
               <motion.button
-                onClick={()=>{
-                  if(musicEnabled){
+                onClick={() => {
+                  if (musicEnabled) {
                     playClickSound();
                   }
 
                   document.getElementById("contact")?.scrollIntoView({
-                    behavior:"smooth"
+                    behavior: "smooth",
                   });
                 }}
                 initial={{ opacity: 0, x: -20 }}
@@ -395,14 +407,14 @@ const About = ({
                 rotate: 0,
               }}
               viewport={{
-                once:true,
-                amount:0.5
+                once: true,
+                amount: 0.5,
               }}
               transition={{
                 type: "spring",
                 stiffness: 180,
                 damping: 12,
-                delay:1
+                delay: 1,
               }}
               className="absolute top-7 left-5 z-10 bg-white border-[3px] border-[#143d32] px-5 py-2 rounded-xl font-black text-[#143d32] shadow-[3px_3px_0_#143d32]"
             >
@@ -506,7 +518,7 @@ const About = ({
                 },
               ].map((stat, index) => (
                 <motion.div
-                  onViewportEnter={()=>setStatsStarted(true)}
+                  onViewportEnter={() => setStatsStarted(true)}
                   key={stat.label}
                   initial={{
                     opacity: 0,
