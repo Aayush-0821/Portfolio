@@ -6,6 +6,7 @@ import BootLoader from "./BootLoader";
 import About from "./About";
 import { useEffect } from "react";
 import Skills from "./Skills";
+import Projects from "./Project";
 
 export default function Portfolio({
   started = false,
@@ -35,6 +36,8 @@ export default function Portfolio({
       <About musicEnabled={musicEnabled}/>
 
       <Skills musicEnabled={musicEnabled}/>
+
+      <Projects />
     </main>
   );
 }
