@@ -176,40 +176,45 @@ const Skills = ({ musicEnabled = false }: { musicEnabled?: boolean }) => {
 
   const currentData = skillData[activeTab];
 
-const equipmentPositions = useMemo(() => {
-  const positions = [
-    { x: 15, y: 15 },
-    { x: 150, y: 25 },
+  const equipmentPositions = useMemo(() => {
+    const positions = [
+      { x: 15, y: 15 },
+      { x: 150, y: 25 },
 
-    { x: 40, y: 90 },
-    { x: 170, y: 120 },
+      { x: 40, y: 90 },
+      { x: 170, y: 120 },
 
-    { x: 20, y: 180 },
-    { x: 140, y: 210 },
+      { x: 20, y: 180 },
+      { x: 140, y: 210 },
 
-    { x: 35, y: 280 },
-    { x: 180, y: 310 },
+      { x: 35, y: 280 },
+      { x: 180, y: 310 },
 
-    { x: 20, y: 380 },
-    { x: 145, y: 420 },
+      { x: 20, y: 380 },
+      { x: 145, y: 420 },
 
-    { x: 50, y: 490 },
-    { x: 170, y: 520 },
-  ];
+      { x: 50, y: 490 },
+      { x: 170, y: 520 },
+    ];
 
-  return currentData.equipment.map((item, index) => ({
-    name: item,
-    ...positions[index],
-    rotate: Math.random() * 8 - 4,
-  }));
-}, [activeTab]);
+    return currentData.equipment.map((item, index) => ({
+      name: item,
+      ...positions[index],
+      rotate: Math.random() * 8 - 4,
+    }));
+  }, [activeTab]);
 
   const constraintsRef = useRef<HTMLDivElement>(null);
+
+  const equipmentTextColor =
+    activeTab === "frontend" || activeTab === "real_time_system"
+      ? "text-white"
+      : "text-black";
 
   return (
     <section
       id="skills"
-      className="min-h-screen bg-[#0e5d3f] px-6 pt-18 md:pt-26 overflow-hidden"
+      className="min-h-screen bg-[#0e5d3f] px-6 pt-18 pb-20 md:pt-26 overflow-hidden"
     >
       {/* Heading */}
 
@@ -437,7 +442,7 @@ const equipmentPositions = useMemo(() => {
                 dragElastic={0.4}
                 whileHover={{
                   scale: 1.08,
-                  rotate:0,
+                  rotate: 0,
                   zIndex: 100,
                 }}
                 whileDrag={{
@@ -462,7 +467,7 @@ const equipmentPositions = useMemo(() => {
                   transform: `rotate(${item.rotate}deg)`,
                   zIndex: 1,
                 }}
-                className={`cursor-grab select-none px-4 py-2 rounded-xl border-4 text-sm font-black shadow-[0_0_15px_rgba(255,247,179,0.35)] ${activeCategory.pill}`}
+                className={`cursor-grab select-none px-4 py-2 rounded-xl border-4 text-sm font-black shadow-[0_0_15px_rgba(255,247,179,0.35)] ${equipmentTextColor} ${activeCategory.pill}`}
               >
                 {item.name}
               </motion.div>
