@@ -7,6 +7,7 @@ import About from "./About";
 import { useEffect } from "react";
 import Skills from "./Skills";
 import Projects from "./Project";
+import Experience from "./Experience";
 
 export default function Portfolio({
   started = false,
@@ -37,7 +38,9 @@ export default function Portfolio({
 
       <Skills musicEnabled={musicEnabled}/>
 
-      <Projects />
+      <Projects musicEnabled={musicEnabled} />
+
+      <Experience />
     </main>
   );
 }

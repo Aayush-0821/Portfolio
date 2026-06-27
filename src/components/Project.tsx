@@ -158,7 +158,11 @@ function BootLoader({ onComplete }: { onComplete: () => void }) {
   );
 }
 
-export default function Projects() {
+export default function Projects({
+  musicEnabled,
+}:{
+  musicEnabled:boolean;
+}) {
   const [selected, setSelected] = useState(3);
   const [activeProject, setActiveProject] = useState(3);
   const [isLoading, setIsLoading] = useState(false);
@@ -231,7 +235,7 @@ export default function Projects() {
   }, [activeProject, isLoading]);
 
   return (
-    <section id="projects" className="min-h-screen px-4 py-21">
+    <section id="projects" className="min-h-screen px-4 pt-21 pb-5">
       <div className="mx-auto max-w-6xl">
         {/* Heading */}
         <motion.div
@@ -349,7 +353,7 @@ export default function Projects() {
                   <button
                     disabled={isLoading}
                     onClick={() => {
-                      playClickSound();
+                      if(musicEnabled) playClickSound();
                       switchProject(index);
                     }}
                     className={`relative h-10 w-16 rounded-full border-4 border-[#2d2d2d]
@@ -566,7 +570,7 @@ export default function Projects() {
 
                       <motion.button
                         onClick={() => {
-                          playClickSound();
+                          if(musicEnabled) playClickSound();
 
                           if (current.name === "Portfolio") {
                             window.location.reload();
@@ -614,7 +618,7 @@ export default function Projects() {
                 <button
                   disabled={isLoading}
                   onClick={() => {
-                    playClickSound();
+                    if(musicEnabled) playClickSound();
                     prev();
                   }}
                   className={`flex items-center gap-2 rounded-lg border-4 border-[#333]
@@ -634,7 +638,7 @@ export default function Projects() {
                 <button
                   disabled={isLoading}
                   onClick={() => {
-                    playClickSound();
+                    if(musicEnabled) playClickSound();
                     next();
                   }}
                   className={`flex items-center gap-2 rounded-lg border-4 border-[#333]
