@@ -142,12 +142,6 @@ export const resumeData: ResumeItem[] = [
     text: "Implemented secure role-based authentication and modular backend architecture for scalability.",
   },
   {
-    id: "project-epiphany-3",
-    section: "projects",
-    type: "body",
-    text: "Unified academic and administrative workflows into a single management platform.",
-  },
-  {
     id: "project-commitai",
     section: "projects",
     type: "body",
@@ -171,19 +165,32 @@ export const resumeData: ResumeItem[] = [
     type: "body",
     text: "Supports multiple AI providers for commit messages and PR descriptions.",
   },
-  //SKILLS
+  //SKILLS (each skill is its own tag so the tech-stack column can stack them)
   {
     id: "skills-heading",
     section: "skills",
     type: "heading",
-    text: "Technical Skills",
+    text: "Tech Stack",
   },
-  {
-    id: "skills",
-    section: "skills",
-    type: "tag",
-    text: "Java • TypeScript • React • Next.js • Node.js • Express • MongoDB • MySQL • Redis • Docker • AWS • DSA",
-  },
+  { id: "skill-java", section: "skills", type: "tag", text: "Java" },
+  { id: "skill-typescript", section: "skills", type: "tag", text: "TypeScript" },
+  { id: "skill-react", section: "skills", type: "tag", text: "React" },
+  { id: "skill-nextjs", section: "skills", type: "tag", text: "Next.js" },
+  { id: "skill-tailwindcss", section: "skills", type: "tag", text: "TailwindCSS"},
+  { id: "skill-nodejs", section: "skills", type: "tag", text: "Node.js" },
+  { id: "skill-express", section: "skills", type: "tag", text: "Express" },
+  { id: "skill-mongodb", section: "skills", type: "tag", text: "MongoDB" },
+  { id: "skill-mysql", section: "skills", type: "tag", text: "MySQL" },
+  { id: "skill-redis", section: "skills", type: "tag", text: "Redis" },
+  { id: "skill-docker", section: "skills", type: "tag", text: "Docker" },
+  { id: "skill-aws", section: "skills", type: "tag", text: "AWS" },
+  { id: "skill-dsa", section: "skills", type: "tag", text: "DSA" },
+  { id: "skill-dbms", section: "skills", type: "tag", text: "DBMS"},
+  { id: "skill-cn", section: "skills", type: "tag", text: "CN"},
+  { id: "skill-os", section: "skills", type: "tag", text: "OS"},
+  { id: "skill-linux", section: "skills", type: "tag", text: "Linux"},
+  { id: "skill-oop", section: "skills", type: "tag", text: "OOP"},
+
   //HONORS
   {
     id: "honors-heading",
