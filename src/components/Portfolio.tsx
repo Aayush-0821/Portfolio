@@ -43,7 +43,7 @@ export default function Portfolio({
 
       <Experience />
 
-      <Resume />
+      <Resume musicEnabled={musicEnabled}/>
     </main>
   );
 }
