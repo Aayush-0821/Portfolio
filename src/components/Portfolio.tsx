@@ -9,6 +9,7 @@ import Skills from "./Skills";
 import Projects from "./Project";
 import Experience from "./Experience";
 import Resume from "./Resume/Resume";
+import Contact from "./Contact";
 
 export default function Portfolio({
   started = false,
@@ -44,6 +45,8 @@ export default function Portfolio({
       <Experience />
 
       <Resume musicEnabled={musicEnabled}/>
+
+      <Contact musicEnabled={musicEnabled}/>
     </main>
   );
 }
