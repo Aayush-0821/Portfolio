@@ -396,7 +396,7 @@ export default function Experience() {
   const [active, setActive] = useState(0);
 
   return (
-    <section id="experience" className="min-h-screen px-4 py-21">
+    <section id="experience" className="min-h-screen px-4 pt-21 pb-3">
       <div className="mx-auto max-w-6xl">
         {/* Heading */}
         <motion.div
