@@ -54,7 +54,10 @@ export default function Contact({
   const handleCopyEmail = () => {
     if (musicEnabled) playClickSound();
     navigator.clipboard.writeText(MY_EMAIL);
-    toast.success("Email copied to clipboard !");
+    toast.dismiss();
+    toast.success("Email copied to clipboard !",{
+      id:"copy-email-toast",
+    });
   };
 
   return (
@@ -62,19 +65,6 @@ export default function Contact({
       id="contact"
       className="min-h-screen px-4 pt-21 pb-8 font-sans relative"
     >
-      <Toaster
-        position="bottom-right"
-        toastOptions={{
-          style: {
-            border: "4px solid #222",
-            borderRadius: "12px",
-            background: "#fff",
-            color: "#111",
-            fontWeight: "900",
-            boxShadow: "4px 4px 0px #222",
-          },
-        }}
-      />
 
       <div className="mx-auto max-w-6xl">
         {/* Heading Section */}
