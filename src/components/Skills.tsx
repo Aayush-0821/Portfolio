@@ -13,7 +13,7 @@ import {
   Trophy,
   ShieldCheck,
 } from "lucide-react";
-import { useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 
 const skillData = {
   foundations: {
@@ -205,6 +205,14 @@ const Skills = ({ musicEnabled = false }: { musicEnabled?: boolean }) => {
   }, [activeTab]);
 
   const constraintsRef = useRef<HTMLDivElement>(null);
+
+  const [tabReady, setTabReady] = useState(false);
+
+  useEffect(() => {
+    setTabReady(false);
+    const id = requestAnimationFrame(() => setTabReady(true));
+    return () => cancelAnimationFrame(id);
+  }, [activeTab]);
 
   const equipmentTextColor =
     activeTab === "frontend" || activeTab === "real_time_system"
@@ -433,45 +441,46 @@ const Skills = ({ musicEnabled = false }: { musicEnabled?: boolean }) => {
             ref={constraintsRef}
             className="relative h-105 overflow-hidden rounded-2xl border-3 border-[#fff7b3] p-6"
           >
-            {equipmentPositions.map((item, index) => (
-              <motion.div
-                key={item.name}
-                drag
-                dragConstraints={constraintsRef}
-                dragMomentum={false}
-                dragElastic={0.4}
-                whileHover={{
-                  scale: 1.08,
-                  rotate: 0,
-                  zIndex: 100,
-                }}
-                whileDrag={{
-                  scale: 1.15,
-                  zIndex: 999,
-                }}
-                initial={{
-                  opacity: 0,
-                  scale: 0,
-                }}
-                animate={{
-                  opacity: 1,
-                  scale: 1,
-                }}
-                transition={{
-                  delay: index * 0.05,
-                }}
-                style={{
-                  position: "absolute",
-                  left: item.x,
-                  top: item.y,
-                  transform: `rotate(${item.rotate}deg)`,
-                  zIndex: 1,
-                }}
-                className={`cursor-grab select-none px-4 py-2 rounded-xl border-4 text-sm font-black shadow-[0_0_15px_rgba(255,247,179,0.35)] ${equipmentTextColor} ${activeCategory.pill}`}
-              >
-                {item.name}
-              </motion.div>
-            ))}
+            {tabReady &&
+              equipmentPositions.map((item, index) => (
+                <motion.div
+                  key={item.name}
+                  drag
+                  dragConstraints={constraintsRef}
+                  dragMomentum={false}
+                  dragElastic={0.4}
+                  whileHover={{
+                    scale: 1.08,
+                    rotate: 0,
+                    zIndex: 100,
+                  }}
+                  whileDrag={{
+                    scale: 1.15,
+                    zIndex: 999,
+                  }}
+                  initial={{
+                    opacity: 0,
+                    scale: 0,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    scale: 1,
+                  }}
+                  transition={{
+                    delay: index * 0.05,
+                  }}
+                  style={{
+                    position: "absolute",
+                    left: item.x,
+                    top: item.y,
+                    transform: `rotate(${item.rotate}deg)`,
+                    zIndex: 1,
+                  }}
+                  className={`cursor-grab select-none px-4 py-2 rounded-xl border-4 text-sm font-black shadow-[0_0_15px_rgba(255,247,179,0.35)] ${equipmentTextColor} ${activeCategory.pill}`}
+                >
+                  {item.name}
+                </motion.div>
+              ))}
           </div>
         </motion.div>
       </div>
