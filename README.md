@@ -1,36 +1,112 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 Aayush's Portfolio
 
-## Getting Started
+> An interactive retro-inspired developer portfolio built with Next.js.
 
-First, run the development server:
+<img width="1918" height="1078" alt="image" src="https://github.com/user-attachments/assets/bd3b78d4-38f6-479f-abe7-beeb2c75fb00" />
+
+
+## 🌐 Live Demo
+
+**Website:** https://aayushvats.me
+
+---
+
+## ✨ Features
+
+- 🎮 Retro-inspired UI and animations
+- 🔊 Optional interactive sound effects
+- ⚡ Smooth page transitions with bootloader
+- 📱 Fully responsive across devices
+- 🎨 Custom handcrafted components
+- 💼 Interactive project showcase
+- 📄 Animated resume section
+- 📬 Contact section
+- 🌟 Pixel-art inspired design language
+- 🚀 Optimized for performance
+
+---
+
+## 🛠 Tech Stack
+
+### Frontend
+
+- Next.js
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+
+### Icons & UI
+
+- Lucide React
+- React Icons
+
+### Deployment
+
+- Vercel
+- Custom Domain
+
+---
+
+## 📸 Sections
+
+- 🏠 Hero
+- 👨‍💻 About
+- 🛠 Skills
+- 🚀 Projects
+- 💼 Experience
+- 📄 Resume
+- 📬 Contact
+
+---
+
+## 🚀 Running Locally
+
+Clone the repository
+
+```bash
+git clone https://github.com/Aayush-0821/Portfolio.git
+```
+
+Install dependencies
+
+```bash
+npm install
+```
+
+Start the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🎨 Design Philosophy
 
-To learn more about Next.js, take a look at the following resources:
+This portfolio was designed to be more than a static website.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Every section is handcrafted to create an engaging experience through playful interactions, smooth animations, subtle sound effects, and a consistent retro-inspired visual identity.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Rather than relying on templates, the UI focuses on personality while maintaining usability and performance.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📬 Contact
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Portfolio: https://aayushvats.me
+
+LinkedIn: https://linkedin.com/in/theaayushvats
+
+Email: vatsayush67@gmail.com
+
+---
+
+## ⭐ Support
+
+If you enjoyed this project, consider giving it a ⭐ on GitHub.
