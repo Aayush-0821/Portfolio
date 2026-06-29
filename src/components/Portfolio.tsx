@@ -4,7 +4,7 @@ import Navbar from "./Navbar";
 import Hero from "./Hero";
 import BootLoader from "./BootLoader";
 import About from "./About";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import Skills from "./Skills";
 import Projects from "./Project";
 import Experience from "./Experience";
@@ -29,6 +29,8 @@ export default function Portfolio({
     window.scrollTo(0, 0);
   }, []);
 
+  const devToolsAttempts = useRef(0);
+
   useEffect(() => {
     console.log(
       "%cHold Up!",
@@ -43,10 +45,8 @@ export default function Portfolio({
       "color: #00ff00; font-size: 14px; font-family: monospace; padding-top: 10px;",
     );
 
-    let devToolsAttempts = 0;
-
     const handleContextMenu = (e: MouseEvent) => {
-      devToolsAttempts++;
+      devToolsAttempts.current++;
       e.preventDefault();
     };
 
@@ -72,20 +72,23 @@ export default function Portfolio({
 
       if(blocked){
         e.preventDefault();
-        toast.dismiss();
-        devToolsAttempts++;
+        devToolsAttempts.current++;
+        toast.dismiss("devtools-toast");
 
-        if(devToolsAttempts === 1){
-          toast.error("Hey! No peeking at the source code!");
+        if(devToolsAttempts.current === 1){
+          toast.error("Hey! No peeking at the source code!",{
+            id: "devtools-toast",
+          });
         }
-        else if(devToolsAttempts === 3){
-          toast.error("Seriously? I said no peeking!");
+        else if(devToolsAttempts.current === 3){
+          toast.error("Okay, you're persistent. Still blocked though.",{
+            id: "devtools-toast",
+          });
         }
-        else if(devToolsAttempts === 5){
-          toast.error("Okay, you're persistent. Still blocked though.");
-        }
-        else if(devToolsAttempts > 7){
-          toast.error("Alright, I respect the grind. You win nothing.");
+        else if(devToolsAttempts.current >= 5){
+          toast.error("Alright, I respect the grind. You win nothing.",{
+            id: "devtools-toast",
+          });
         }
       }
     };
@@ -97,7 +100,7 @@ export default function Portfolio({
       document.removeEventListener("contextmenu", handleContextMenu);
       document.removeEventListener("keydown", handleKeyDown);
     };
-  });
+  },[]);
 
   return (
     <main className="min-h-screen bg-[#fff7b3] select-none">

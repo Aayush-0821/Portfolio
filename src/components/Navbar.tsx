@@ -97,7 +97,7 @@ const Navbar = ({
           transition-all
         "
       >
-        <span className="font-mono font-black text-base md:text-lg text-white tracking-widest drop-shadow-[2px_2px_0_rgba(34,34,34,1)] pl-1 md:p-1 -mt-0.5">
+        <span className="font-mono font-black text-[11px] md:text-lg text-white tracking-normal md:tracking-widest drop-shadow-[2px_2px_0_rgba(34,34,34,1)] leading-none">
           {`</>`}
         </span>
       </motion.button>
