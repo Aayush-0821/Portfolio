@@ -14,13 +14,13 @@ const Hero = ({
   started?: boolean;
 }) => {
   const tech = [
-    "Problem Solver",
-    "Full Stack",
-    "TypeScript",
-    "Next.js",
-    "Cloud",
-    "Java",
-  ];
+  "Problem Solver",
+  "Full-Stack",
+  "AI Enthusiast",
+  "Cloud",
+  "Open Source",
+  "Fast Learner",
+];
 
   const statCards = [
     {
@@ -176,7 +176,7 @@ hover:-translate-y-1 active:translate-y-1 active:shadow-none transition-all dura
                 whileTap={{
                   scale: 0.95,
                 }}
-                className="bg-[#fff7b3] border-2 border-black rounded-md px-3 py-2 text-xs font-semibold text-black cursor-pointer"
+                className="bg-[#fff7b3] border-2 border-black rounded-md px-3 py-2 text-xs font-semibold text-black"
               >
                 {item}
               </motion.div>
@@ -208,7 +208,7 @@ hover:-translate-y-1 active:translate-y-1 active:shadow-none transition-all dura
                     duration: 0.15,
                   },
                 }}
-                className={`bg-white border-2 border-black rounded-xl px-5 py-4 shadow-[4px_4px_0_#000] cursor-pointer ${index % 2 === 0 ? "-rotate-2" : "rotate-2"}`}
+                className={`bg-white border-2 border-black rounded-xl px-5 py-4 shadow-[4px_4px_0_#000] ${index % 2 === 0 ? "-rotate-2" : "rotate-2"}`}
               >
                 <h3 className="font-bold text-[#2a2a2a] text-sm">
                   {card.title}

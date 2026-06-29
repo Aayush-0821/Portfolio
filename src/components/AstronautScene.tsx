@@ -4,7 +4,6 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { Model } from "./Astronaut";
 import { OrbitControls } from "@react-three/drei";
 import { useMediaQuery } from "react-responsive";
-import { easing } from "maath";
 
 export default function AstronautScene() {
   const isDesktop = useMediaQuery({
@@ -19,9 +18,9 @@ export default function AstronautScene() {
     <div className="w-full h-full">
       <Canvas>
         <Model
-          scale={1.4}
-          rotation={[0.95, Math.PI - 0.9, -0.3]}
-          position={[0, -1, 1]}
+          scale={1.75}
+          rotation={[0.4, Math.PI - 0.7, -0.3]}
+          position={[0, -0.7, 1]}
         />
 
         <OrbitControls
@@ -33,20 +32,7 @@ export default function AstronautScene() {
           maxAzimuthAngle={1}
           enablePan={false}
         />
-
-        <Rig />
       </Canvas>
     </div>
   );
-}
-
-function Rig() {
-  return useFrame((state, delta) => {
-    easing.damp3(
-      state.camera.position,
-      [state.mouse.x / 10, 1 + state.mouse.y / 10, 3],
-      0.5,
-      delta,
-    );
-  });
 }
