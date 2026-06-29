@@ -13,12 +13,12 @@ const Navbar = ({
 }) => {
   const [scrolled, setScrolled] = useState(false);
 
-  const handleScroll = (sectionId:string) =>{
+  const handleScroll = (sectionId: string) => {
     document.getElementById(sectionId)?.scrollIntoView({
-      behavior:"smooth",
-      block:"start",
+      behavior: "smooth",
+      block: "start",
     });
-  }
+  };
 
   const links = [
     {
@@ -72,42 +72,34 @@ const Navbar = ({
     >
       {/* Logo / Home */}
       <motion.button
-        onClick={()=>handleScroll("home")}
+        onClick={() =>{
+          if(musicEnabled) playClickSound();
+          handleScroll("home")
+        }}
         animate={{
-          y: [0, -4, 0],
+          y: [0, -3, 0],
         }}
         transition={{
-          duration: 0.75,
+          duration: 2.5,
           repeat: Infinity,
           ease: "easeInOut",
         }}
         className="
-        w-12
-        h-12
-        rounded-full
-        border-[3px]
-        border-black
-
-        flex
-        items-center
-        justify-center
-
-        bg-[#fff7b3]
-        cursor-pointer
-        hover:scale-105
-        transition
+       flex items-center justify-center
+          w-8 h-8 md:w-11.5 md:h-11.5
+          bg-[#ff8300]
+          border-[3px] border-[#222]
+          rounded-lg
+          shadow-[3px_3px_0_#222]
+          cursor-pointer
+          hover:-translate-y-1 hover:shadow-[5px_5px_0_#222]
+          active:translate-y-1 active:shadow-none
+          transition-all
         "
       >
-        <div
-          className="
-          w-6
-          h-6
-          rounded-full
-          bg-orange-500
-          border-2
-          border-black
-          "
-        />
+        <span className="font-mono font-black text-base md:text-lg text-white tracking-widest drop-shadow-[2px_2px_0_rgba(34,34,34,1)] pl-1 md:p-1 -mt-0.5">
+          {`</>`}
+        </span>
       </motion.button>
 
       {/* Links */}
@@ -125,7 +117,7 @@ const Navbar = ({
         {links.map((link) => (
           <button
             key={link.name}
-            onClick={()=>handleScroll(link.section)}
+            onClick={() => handleScroll(link.section)}
             className={`
 group
 relative
