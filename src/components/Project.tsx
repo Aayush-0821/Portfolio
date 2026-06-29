@@ -578,11 +578,7 @@ export default function Projects({
                           }
 
                           if (current.live) {
-                            window.open(
-                              current.live,
-                              "_blank",
-                              "noopener,noreferrer",
-                            );
+                            window.location.href = current.live;
                           }
                         }}
                         className="mt-2 w-fit rounded-lg border-4 border-[#333] bg-[#ff6b6b] px-6 py-3 font-black text-white shadow-[0_5px_0_#222] hover:-translate-y-1 active:translate-y-1 active:shadow-none transition-all duration-200 cursor-pointer"
