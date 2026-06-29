@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { playClickSound } from "../utils/sound";
 import {
   Joystick,
-  BrainCircuit,
+  Brain,
   MonitorSmartphone,
   Radio,
   ServerCog,
@@ -120,7 +120,7 @@ const categories = [
   {
     id: "foundations",
     label: "CORE CS",
-    icon: BrainCircuit,
+    icon: Brain,
     active:
       "bg-linear-to-r from-[#ffd064] to-[#ffc23d] text-black border-[#14372b] shadow-[0_5px_0_#14372b]",
     pill: "bg-linear-to-r from-[#ffd064] to-[#ffc23d] text-black border-[#14372b]",
