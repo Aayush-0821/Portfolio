@@ -46,6 +46,7 @@ const Counter = ({ value, start }: { value: number; start: boolean }) => {
 const About = ({ musicEnabled = false }: { musicEnabled?: boolean }) => {
   const [hovering, setHovering] = useState(false);
   const [statsStarted, setStatsStarted] = useState(false);
+  const [pushes,setPushes] = useState(0);
 
   const [mouse, setMouse] = useState({
     x: 0,
@@ -80,6 +81,17 @@ const About = ({ musicEnabled = false }: { musicEnabled?: boolean }) => {
       scale: 1,
     });
   };
+
+  useEffect(()=>{
+    async function getPushes(){
+      const res = await fetch("/api/github");
+      const data = await res.json();
+
+      setPushes(data.pushes);
+    }
+
+    getPushes();
+  },[]);
 
   return (
     <section
@@ -414,7 +426,7 @@ const About = ({ musicEnabled = false }: { musicEnabled?: boolean }) => {
                 type: "spring",
                 stiffness: 180,
                 damping: 12,
-                delay: 1,
+                delay: 0.7,
               }}
               className="absolute top-7 left-5 z-10 bg-white border-[3px] border-[#143d32] px-5 py-2 rounded-xl font-black text-[#143d32] shadow-[3px_3px_0_#143d32]"
             >
@@ -502,17 +514,17 @@ const About = ({ musicEnabled = false }: { musicEnabled?: boolean }) => {
             <div className="grid grid-cols-3 gap-2 md:gap-6">
               {[
                 {
-                  value: 4,
+                  value: 5,
                   label: "PROJECTS",
                   color: "text-white",
                 },
                 {
-                  value: 15,
+                  value: 19,
                   label: "STACK",
                   color: "text-[#06d49f]",
                 },
                 {
-                  value: 465,
+                  value: pushes,
                   label: "PUSHES",
                   color: "text-[#ffc23d]",
                 },

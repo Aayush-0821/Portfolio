@@ -60,7 +60,7 @@ export default function Contact({
   return (
     <section
       id="contact"
-      className="min-h-screen px-4 pt-21 pb-5 font-sans relative"
+      className="min-h-screen px-4 pt-21 pb-8 font-sans relative"
     >
       <Toaster
         position="bottom-right"
@@ -212,7 +212,17 @@ export default function Contact({
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="flex items-center gap-2 rounded-lg border-4 border-[#222] bg-linear-to-r from-[#ff8300] to-[#ff6b00] px-6 py-3 font-black text-white shadow-[0_5px_0_#222] hover:-translate-y-1 active:translate-y-1 active:shadow-none transition-all duration-200 cursor-pointer"
+                      className={`
+    flex items-center gap-2 rounded-lg border-4 border-[#222]
+    bg-linear-to-r from-[#ff8300] to-[#ff6b00]
+    px-6 py-3 font-black text-white
+    transition-all duration-200
+    ${
+      isSubmitting
+        ? "translate-y-1 shadow-none cursor-not-allowed"
+        : "shadow-[0_5px_0_#222] hover:-translate-y-1 active:translate-y-1 active:shadow-none cursor-pointer"
+    }
+  `}
                     >
                       <Send size={18} />
                       {isSubmitting ? "SENDING..." : "SEND"}
@@ -220,7 +230,7 @@ export default function Contact({
                     <button
                       type="reset"
                       onClick={() => {
-                        // if (musicEnabled) playClickSound();
+                        if (musicEnabled) playClickSound();
                         setFormData({ name: "", email: "", message: "" });
                       }}
                       className="flex items-center gap-2 rounded-lg border-4 border-[#222] bg-white px-6 py-3 font-black text-[#111] shadow-[0_5px_0_#222] hover:-translate-y-1 active:translate-y-1 active:shadow-none transition-all duration-200 cursor-pointer"
@@ -234,7 +244,7 @@ export default function Contact({
                     <button
                       type="button"
                       onClick={handleCopyEmail}
-                      className="bg-[#efe9b5] border-4 border-[#222] rounded-md px-4 py-2 font-black text-sm shadow-[0_3px_0_#222] active:translate-y-1 active:shadow-none transition-all text-black hover:cursor-pointer"
+                      className="hidden md:block bg-[#efe9b5] border-4 border-[#222] rounded-md px-4 py-2 font-black text-sm shadow-[0_3px_0_#222] active:translate-y-1 active:shadow-none transition-all text-black hover:cursor-pointer"
                     >
                       Copy Email
                     </button>
