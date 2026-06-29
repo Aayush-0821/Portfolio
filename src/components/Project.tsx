@@ -167,16 +167,8 @@ export default function Projects({
   const [activeProject, setActiveProject] = useState(3);
   const [isLoading, setIsLoading] = useState(false);
   const [pendingProject, setPendingProject] = useState<number | null>(null);
-  const [isMobile, setIsMobile] = useState(false);
 
   const current = projects[activeProject];
-
-  useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 768);
-    check();
-    window.addEventListener("resize", check);
-    return () => window.removeEventListener("resize", check);
-  }, []);
 
   const switchProject = (index: number) => {
     if (isLoading || index === activeProject) return;
@@ -235,7 +227,7 @@ export default function Projects({
   }, [activeProject, isLoading]);
 
   return (
-    <section id="projects" className="min-h-screen px-4 pt-21 pb-5">
+    <section id="projects" className="min-h-screen overflow-x-hidden px-4 pt-21 pb-5">
       <div className="mx-auto max-w-6xl">
         {/* Heading */}
         <motion.div
@@ -277,7 +269,7 @@ export default function Projects({
           </div>
         </motion.div>
 
-        <div className="grid gap-6 lg:grid-cols-[400px_1fr]">
+        <div className="grid gap-6 lg:grid-cols-[400px_minmax(0,1fr)]">
           {/* LEFT PANEL */}
           <motion.div
             initial={{ opacity: 0, x: -80 }}
@@ -287,7 +279,7 @@ export default function Projects({
               duration: 0.8,
               ease: "easeInOut",
             }}
-            className="hidden lg:block overflow-hidden rounded-[28px] border-4 border-[#222] bg-[#f5f5f5] shadow-[8px_8px_0_#111]"
+            className="hidden lg:block w-full max-w-100 min-w-0 overflow-hidden rounded-[28px] border-4 border-[#222] bg-[#f5f5f5] shadow-[8px_8px_0_#111]"
           >
             {/* Header */}
             <div className="flex items-center justify-between border-b-4 border-[#222] bg-[#efe9b5] px-6 py-4">
@@ -503,7 +495,7 @@ export default function Projects({
                   className="relative z-10 space-y-6"
                 >
                   {/* TOP ROW */}
-                  <div className="grid gap-6 md:grid-cols-[minmax(0,1fr)_300px]">
+                  <div className="grid gap-6 grid-cols-1 lg:grid-cols-[minmax(0,1fr)_300px]">
                     {/* Project Image */}
                     <motion.div
                       initial="rest"

@@ -19,7 +19,6 @@ const Hero = ({
   "AI Enthusiast",
   "Cloud",
   "Open Source",
-  "Fast Learner",
 ];
 
   const statCards = [
