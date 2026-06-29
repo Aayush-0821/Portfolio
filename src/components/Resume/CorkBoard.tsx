@@ -1,6 +1,13 @@
 "use client";
 
-import { Mail, Phone, Pin, WandSparkles, Download, Shuffle } from "lucide-react";
+import {
+  Mail,
+  Phone,
+  Pin,
+  WandSparkles,
+  Download,
+  Shuffle,
+} from "lucide-react";
 import { resumeData } from "./ResumeData";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { playClickSound } from "@/src/utils/sound";
@@ -116,7 +123,7 @@ export default function CorkBoard({
       }}
       className="
         overflow-hidden
-        rounded-[20px] md:rounded-[28px]
+        rounded-[20px] sm:rounded-[28px]
         border-4
         border-[#222]
         bg-[#e8d9a8]
@@ -127,21 +134,23 @@ export default function CorkBoard({
 
       <div
         className="
-          flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between
-          items-center
-          justify-between
+          flex flex-row items-center justify-between
           border-b-4
           border-[#222]
           bg-[#ffeca1]
-          px-4
+          px-3
           sm:px-6
-          py-4
+          py-3
+          sm:py-4
         "
       >
-        <div className="flex items-center gap-3">
-          <Pin size={18} className="rotate-[-20deg] text-[#7a3b1f]" />
+        <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+          <Pin
+            size={16}
+            className="shrink-0 rotate-[-20deg] text-[#7a3b1f] sm:size-4.5"
+          />
 
-          <span className="text-sm sm:text-base font-black tracking-wider text-[#3a2a14]">
+          <span className="truncate text-xs sm:text-base font-black tracking-wider text-[#3a2a14]">
             PERSONNEL DOSSIER
           </span>
         </div>
@@ -155,7 +164,7 @@ export default function CorkBoard({
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className="hidden text-[12px] font-mono text-gray-600 md:block"
+          className="hidden shrink-0 text-[10px] sm:text-[12px] font-mono text-gray-600 md:block"
         >
           {mode === "scattered" ? "SPELL ACTIVE" : "SPELL BROKEN"}
         </motion.span>
@@ -164,7 +173,7 @@ export default function CorkBoard({
       {/* ------------------ BODY ----------------- */}
 
       <div
-        className="relative h-auto min-h-225 lg:min-h-0 lg:h-150 xl:h-140 overflow-hidden bg-[#fff8d6] px-5 sm:px-8 py-4 sm:py-4 text-[#222]"
+        className="relative h-auto lg:h-150 xl:h-140 overflow-hidden bg-[#fff8d6] px-4 sm:px-6 md:px-8 py-4 text-[#222]"
         style={{
           backgroundImage:
             "radial-gradient(circle at 1px 1px, rgba(0,0,0,.08) 1px, transparent 0)",
@@ -174,7 +183,7 @@ export default function CorkBoard({
         {/* ================= HEADER ================= */}
 
         <div className="border-b-2 border-[#222] pb-4">
-          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
             {/* NAME */}
             <div>
               {header.map((item) => (
@@ -184,7 +193,7 @@ export default function CorkBoard({
                   limitY={20}
                   mode={mode}
                   key={item.id}
-                  className="text-3xl sm:text-4xl font-black tracking-tight text-[#222]"
+                  className="text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight text-[#222]"
                 >
                   {item.text}
                 </Piece>
@@ -192,31 +201,37 @@ export default function CorkBoard({
             </div>
 
             {/* CONTACT */}
-            <div className="flex flex-wrap gap-3 sm:gap-x-5 text-sm items-center">
+            <div className="flex flex-wrap gap-x-3 gap-y-1.5 sm:gap-x-5 text-[11px] sm:text-sm items-center">
               {contact.map((item) => (
                 <Piece
                   as="div"
                   mode={mode}
                   key={item.id}
-                  className="flex items-center gap-2 font-medium text-neutral-700"
+                  className="flex items-center gap-1.5 sm:gap-2 font-medium text-neutral-700"
                 >
                   {item.id === "phone" && (
-                    <Phone size={14} className="text-[#d97706]" />
+                    <Phone
+                      size={13}
+                      className="shrink-0 text-[#d97706] sm:size-3.5"
+                    />
                   )}
 
                   {item.id === "email" && (
-                    <Mail size={14} className="text-[#d97706]" />
+                    <Mail
+                      size={13}
+                      className="shrink-0 text-[#d97706] sm:size-3.5"
+                    />
                   )}
 
                   {item.id === "github" && (
-                    <FaGithub className="text-[#d97706]" />
+                    <FaGithub className="shrink-0 text-[#d97706]" />
                   )}
 
                   {item.id === "linkedIn" && (
-                    <FaLinkedin className="text-[#d97706]" />
+                    <FaLinkedin className="shrink-0 text-[#d97706]" />
                   )}
 
-                  <span>{item.text}</span>
+                  <span className="break-all sm:break-normal">{item.text}</span>
                 </Piece>
               ))}
             </div>
@@ -225,7 +240,7 @@ export default function CorkBoard({
 
         {/* ================= MAIN ================= */}
 
-        <div className="mt-5 grid h-auto lg:h-[calc(100%-110px)] grid-cols-1 lg:grid-cols-[1.3fr_1fr] gap-8">
+        <div className="mt-5 grid h-auto sm:grid-cols-[1.3fr_1fr] lg:h-[calc(100%-110px)] gap-6 sm:gap-8">
           {/* LEFT */}
 
           <div className="flex flex-col justify-between">
@@ -234,21 +249,26 @@ export default function CorkBoard({
                 <Piece
                   as="h2"
                   mode={mode}
-                  className="text-base font-black tracking-wider text-[#222]"
+                  className="text-sm sm:text-base font-black tracking-wider text-[#222]"
                 >
                   EDUCATION
                 </Piece>
               </div>
 
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between text-[14px] sm:text-[15px] text-[#333] gap-1 sm:gap-0">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between text-[13px] sm:text-[15px] text-[#333] gap-1 sm:gap-0">
                 <Piece as="span" mode={mode} className="font-semibold">
                   {educationDegree?.text.split(" — ")[0]}{" "}
                   <span className="font-normal text-neutral-600 block sm:inline">
-                    <span className="hidden sm:inline">•</span> {educationDegree?.text.split(" — ")[1]}
+                    <span className="hidden sm:inline">•</span>{" "}
+                    {educationDegree?.text.split(" — ")[1]}
                   </span>
                 </Piece>
 
-                <Piece as="span" mode={mode} className="font-bold text-[#d97706] sm:text-inherit">
+                <Piece
+                  as="span"
+                  mode={mode}
+                  className="font-bold text-[#d97706] sm:text-inherit"
+                >
                   {educationGpa?.text}
                 </Piece>
               </div>
@@ -267,7 +287,7 @@ export default function CorkBoard({
                 <Piece
                   as="h2"
                   mode={mode}
-                  className="text-base font-black tracking-wider text-[#222]"
+                  className="text-sm sm:text-base font-black tracking-wider text-[#222]"
                 >
                   EXPERIENCE
                 </Piece>
@@ -275,7 +295,11 @@ export default function CorkBoard({
 
               {/* Position + Duration */}
               <div className="mb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-0">
-                <Piece as="span" mode={mode} className="text-[14px] sm:text-[15px] font-bold">
+                <Piece
+                  as="span"
+                  mode={mode}
+                  className="text-[13px] sm:text-[15px] font-bold"
+                >
                   {experienceRole?.text.split(" — ")[0]}
                 </Piece>
 
@@ -312,12 +336,12 @@ export default function CorkBoard({
               </ul>
             </div>
 
-            <div className="mb-5 lg:mb-5">
+            <div className="hidden sm:mb-5 sm:block lg:mb-5">
               <div className="mb-2 border-b border-[#555] pb-1">
                 <Piece
                   as="h2"
                   mode={mode}
-                  className="text-base font-black tracking-wider text-[#222]"
+                  className="text-sm sm:text-base font-black tracking-wider text-[#222]"
                 >
                   HONORS
                 </Piece>
@@ -347,7 +371,7 @@ export default function CorkBoard({
                 <Piece
                   as="h2"
                   mode={mode}
-                  className="text-base font-black tracking-wider text-[#222]"
+                  className="text-sm sm:text-base font-black tracking-wider text-[#222]"
                 >
                   PROJECTS
                 </Piece>
@@ -357,7 +381,11 @@ export default function CorkBoard({
 
               <div className="mb-6 lg:mb-4">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-0">
-                  <Piece as="h3" mode={mode} className="text-[14px] sm:text-[15px] font-bold">
+                  <Piece
+                    as="h3"
+                    mode={mode}
+                    className="text-[13px] sm:text-[15px] font-bold"
+                  >
                     {epiphanyTitle?.text.split(" — ")[0]}
                   </Piece>
 
@@ -396,7 +424,11 @@ export default function CorkBoard({
 
               <div>
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-0">
-                  <Piece as="h3" mode={mode} className="text-[14px] sm:text-[15px] font-bold">
+                  <Piece
+                    as="h3"
+                    mode={mode}
+                    className="text-[13px] sm:text-[15px] font-bold"
+                  >
                     {commitAiTitle?.text.split(" — ")[0]}
                   </Piece>
 
@@ -432,12 +464,12 @@ export default function CorkBoard({
               </div>
             </div>
             {/* TECH STACK */}
-            <div>
+            <div className="hidden sm:block">
               <div className="mb-2 border-b border-[#555] pb-1">
                 <Piece
                   as="h2"
                   mode={mode}
-                  className="text-base font-black tracking-wider text-[#222]"
+                  className="text-sm sm:text-base font-black tracking-wider text-[#222]"
                 >
                   TECH STACK
                 </Piece>
@@ -445,7 +477,12 @@ export default function CorkBoard({
 
               <div className="space-y-1.5 sm:space-y-1 text-[12px] sm:text-[13px] text-[#333]">
                 {techGroups.map((group) => (
-                  <Piece as="div" mode={mode} key={group.label} className="leading-relaxed">
+                  <Piece
+                    as="div"
+                    mode={mode}
+                    key={group.label}
+                    className="leading-relaxed"
+                  >
                     <span className="font-semibold">{group.label}:</span>{" "}
                     {group.ids
                       .map((id) => skillById(id))
@@ -465,19 +502,21 @@ export default function CorkBoard({
         className="
           flex
           flex-col
-          gap-4
+          gap-3
+          sm:gap-4
           border-t-4
           border-[#222]
           bg-[#ffeca1]
-          px-4
+          px-3
           sm:px-6
-          py-4
+          py-3
+          sm:py-4
           lg:flex-row
           lg:items-center
           lg:justify-between
         "
       >
-        <div className="flex flex-wrap gap-2 sm:gap-3">
+        <div className="grid grid-cols-3 gap-2 sm:flex sm:flex-wrap sm:gap-3">
           <button
             onClick={handleStop}
             disabled={disableDispel}
@@ -486,25 +525,20 @@ export default function CorkBoard({
               cursor-pointer
               items-center
               justify-center
-              flex-1
-              sm:flex-none
-              gap-2
+              gap-1.5
+              sm:gap-2
               rounded-lg
               border-4
-              border-[#333]
-              bg-linear-to-r
-              from-[#60a5fa]
-              via-[#3b82f6]
-              to-[#2563eb]
-              px-3
+              px-2
               sm:px-5
               py-2.5
               sm:py-3
-              text-xs
+              text-[10px]
               sm:text-sm
               font-black
               text-white
-              shadow-[0_5px_0_#222]
+              shadow-[0_4px_0_#222]
+              sm:shadow-[0_5px_0_#222]
               transition-all
               duration-200
               ${
@@ -514,8 +548,8 @@ export default function CorkBoard({
               }
             `}
           >
-            <WandSparkles size={16} className="shrink-0" />
-            DISPEL
+            <WandSparkles size={14} className="shrink-0 sm:size-4" />
+            <span className="truncate">DISPEL</span>
           </button>
 
           <button
@@ -525,22 +559,22 @@ export default function CorkBoard({
               cursor-pointer
               items-center
               justify-center
-              flex-1
-              sm:flex-none
-              gap-2
+              gap-1.5
+              sm:gap-2
               rounded-lg
               border-4
               border-[#333]
               bg-[#ff6b6b]
-              px-3
+              px-2
               sm:px-5
               py-2.5
               sm:py-3
-              text-xs
+              text-[10px]
               sm:text-sm
               font-black
               text-white
-              shadow-[0_5px_0_#222]
+              shadow-[0_4px_0_#222]
+              sm:shadow-[0_5px_0_#222]
               transition-all
               duration-200
               hover:-translate-y-1
@@ -548,8 +582,8 @@ export default function CorkBoard({
               active:shadow-none
             "
           >
-            <Download size={16} className="shrink-0" />
-            DOWNLOAD CV
+            <Download size={14} className="shrink-0 sm:size-4" />
+            <span className="truncate">DOWNLOAD CV</span>
           </button>
 
           <button
@@ -560,22 +594,20 @@ export default function CorkBoard({
               cursor-pointer
               items-center
               justify-center
-              flex-1
-              sm:flex-none
-              gap-2
+              gap-1.5
+              sm:gap-2
               rounded-lg
               border-4
-              border-[#333]
-              bg-white
-              px-3
+              px-2
               sm:px-5
               py-2.5
               sm:py-3
-              text-xs
+              text-[10px]
               sm:text-sm
               font-black
               text-black
-              shadow-[0_5px_0_#222]
+              shadow-[0_4px_0_#222]
+              sm:shadow-[0_5px_0_#222]
               transition-all
               duration-200
               ${
@@ -585,8 +617,8 @@ export default function CorkBoard({
               }
             `}
           >
-            <Shuffle size={16} className="shrink-0" />
-            CAST SPELL
+            <Shuffle size={14} className="shrink-0 sm:size-4" />
+            <span className="truncate">CAST SPELL</span>
           </button>
         </div>
 
