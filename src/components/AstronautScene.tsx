@@ -19,8 +19,8 @@ export default function AstronautScene() {
       <Canvas>
         <Model
           scale={1.75}
-          rotation={[0.4, Math.PI - 0.7, -0.3]}
-          position={[0, -0.7, 1]}
+          rotation={[0.75, Math.PI-0.45, -0.8]}
+          position={[1.5, -0.9, 1]}
         />
 
         <OrbitControls
