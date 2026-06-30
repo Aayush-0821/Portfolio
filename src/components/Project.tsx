@@ -27,10 +27,10 @@ const projects = [
     live: "https://epiphany-client.vercel.app/",
 
     points: [
-      "Centralized management for institutes, students, batches, vendors, and administrators.",
+      "Centralized management for institutes, students, batches, and administrators.",
       "Implemented secure role-based authentication with protected workflows.",
-      "Designed a modular backend architecture for scalability and maintainability.",
-      "Reduced manual coordination by consolidating multiple workflows into one platform.",
+      "Designed a modular backend architecture for scalability and maintainablity.",
+      "Reduced manual coordination by unifying academic workflows.",
     ],
   },
 
@@ -138,7 +138,7 @@ function BootLoader({ onComplete }: { onComplete: () => void }) {
   }, [line, onComplete]);
 
   return (
-    <div className="p-8 font-mono text-lg text-gray-500">
+    <div className="md:min-h-93 min-h-162 p-8 font-mono text-lg text-gray-500">
       {bootMessages.slice(0, line).map((msg) => (
         <div key={msg}>&gt; {msg}</div>
       ))}
@@ -570,7 +570,7 @@ export default function Projects({
                           }
 
                           if (current.live) {
-                            window.location.href = current.live;
+                            window.open(current.live,"_blank","noopener,noreferrer");
                           }
                         }}
                         className="mt-2 w-fit rounded-lg border-4 border-[#333] bg-[#ff6b6b] px-6 py-3 font-black text-white shadow-[0_5px_0_#222] hover:-translate-y-1 active:translate-y-1 active:shadow-none transition-all duration-200 cursor-pointer"
